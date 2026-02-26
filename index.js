@@ -37,13 +37,11 @@ app.post('/usuarios', (req, res) => {
   if (!nome || !email) {
     return res.status(400).json({ erro: 'Nome e email são obrigatórios' });
   }
-
   const novoUsuario = {
     id: usuarios.length > 0 ? usuarios[usuarios.length - 1].id + 1 : 1,
     nome,
     email
   };
-
   usuarios.push(novoUsuario);
 
   res.status(201).json(novoUsuario);
