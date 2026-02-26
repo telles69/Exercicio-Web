@@ -3,14 +3,17 @@ const app = express();
 
 app.use(express.json());
 
+//npm i
+//npm run start
+
 const usuarios = [
   { id: 1, nome: 'Ana Silva', email: 'ana@email.com' },
-  { id: 2, nome: 'Bruno Souza', email: 'bruno@email.com' },
-  { id: 3, nome: 'Carla Oliveira', email: 'carla@email.com' }
+  { id: 2, nome: 'Joao Telles', email: 'joao@email.com' },
+  { id: 3, nome: 'Erico Campos', email: 'erico@email.com' }
 ];
 
-app.get('/', (req, res) => {
-  res.send('Olá mundo!');
+app.get('/', (req, res) => { 
+  res.send('Teste para API de usuários');
 });
 
 app.get('/usuarios', (req, res) => {
@@ -49,9 +52,7 @@ app.post('/usuarios', (req, res) => {
 app.put('/usuarios/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const { nome, email } = req.body;
-
   const index = usuarios.findIndex(u => u.id === id);
-
   if (index === -1) {
     return res.status(404).json({ erro: 'Usuário não encontrado' });
   }
